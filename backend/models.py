@@ -65,3 +65,28 @@ class Fossil(db.Model):
             "image_url": self.image_url,
             "user_id": self.user_id
         }
+    
+class ReferenceFossil(db.Model):
+    __tablename__ = "reference_fossils"
+
+    id = db.Column(db.Integer, primary_key=True)
+
+    common_name = db.Column(db.String(100), nullable=False)
+    scientific_name = db.Column(db.String(150))
+    fossil_type = db.Column(db.String(100), nullable=False)
+    geological_period = db.Column(db.String(100), nullable=False)
+    description = db.Column(db.Text)
+    image_url = db.Column(db.String(255))
+    characteristics = db.Column(db.Text)
+
+    def to_dict(self):
+        return {
+            "id": self.id,
+            "common_name": self.common_name,
+            "scientific_name": self.scientific_name,
+            "fossil_type": self.fossil_type,
+            "geological_period": self.geological_period,
+            "description": self.description,
+            "image_url": self.image_url,
+            "characteristics": self.characteristics
+        }
